@@ -1,0 +1,209 @@
+1. Basic calculator (junit 5)
+public class Calculator {
+    public int add(int a, int b) {
+        return a + b;
+    }
+    public int subtract(int a, int b) {
+        return a - b;
+    }
+    public int multiply(int a, int b) {
+        return a * b;
+    }
+    public int divide(int a, int b) {
+        if (b == 0) {
+            throw new ArithmeticException("Cannot divide by zero");
+        }
+        return a / b;
+    }
+}
+____
+import static org.junit.Assert.*;
+import org.junit.Test;
+public class CalculatorTest {
+    Calculator c = new Calculator();
+    @Test
+    public void testAdd() {
+        assertEquals(10, c.add(5, 5));
+    }
+    @Test
+    public void testSubtract() {
+        assertEquals(2, c.subtract(5, 3));
+    }
+    @Test
+    public void testMultiply() {
+        assertEquals(15, c.multiply(3, 5));
+    }
+    @Test
+    public void testDivide() {
+        assertEquals(2, c.divide(10, 5));
+    }
+    @Test(expected = ArithmeticException.class)
+    public void testDivideByZero() {
+        c.divide(10, 0);
+    }
+}
+
+
+2. Simple greeting msg (API) 
+GreetingApp.java (Main Class)
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class GreetingApp {
+
+    public static void main(String[] args) {
+        SpringApplication.run(GreetingApp.class, args);
+    }
+}
+_____
+GreetingController.java (API Class)
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class GreetingController {
+
+    @GetMapping("/greet")
+    public String greet() {
+        return "Hello, Welcome!";
+    }
+}
+_____
+ JUnit 4 Test Code
+import static org.junit.Assert.*;
+import org.junit.Test;
+
+public class GreetingControllerTest {
+
+    GreetingController g = new GreetingController();
+
+    @Test
+    public void testGreet() {
+        assertEquals("Hello, Welcome!", g.greet());
+    }
+}
+
+
+3. Linear search 
+public class LinearSearch {
+    public static int search(int arr[], int key) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == key) {
+                return i; // element found
+            }
+        }
+        return -1; // not found
+    }
+    public static void main(String[] args) {
+        int arr[] = {10, 20, 30, 40, 50};
+        int key = 30;
+        int result = search(arr, key);
+        if (result != -1)
+            System.out.println("Element found at index: " + result);
+        else
+            System.out.println("Element not found");
+    }
+}
+__________
+
+import static org.junit.Assert.*;
+import org.junit.Test;
+public class LinearSearchTest {
+    @Test
+    public void testElementFound() {
+        int arr[] = {10, 20, 30, 40, 50};
+        int result = LinearSearch.search(arr, 30);
+        assertEquals(2, result);
+    }
+    @Test
+    public void testElementNotFound() {
+        int arr[] = {10, 20, 30, 40, 50};
+        int result = LinearSearch.search(arr, 99);
+        assertEquals(-1, result);
+    }
+}
+
+
+4. Compare 3 numbers and print highest number among three 
+public class MaxNumber {
+    public int findMax(int a, int b, int c) {
+        int max = a;
+        if (b > max) {
+            max = b;
+        }
+        if (c > max) {
+            max = c;
+        }
+        return max;
+    }
+    public static void main(String[] args) {
+        MaxNumber m = new MaxNumber();
+        int result = m.findMax(10, 25, 15);
+        System.out.println("Highest number is: " + result);
+    }
+}
+_____
+
+import static org.junit.Assert.*;
+import org.junit.Test;
+
+public class MaxNumberTest {
+
+    MaxNumber m = new MaxNumber();
+
+    @Test
+    public void testMax1() {
+        assertEquals(25, m.findMax(10, 25, 15));
+    }
+
+    @Test
+    public void testMax2() {
+        assertEquals(50, m.findMax(50, 20, 30));
+    }
+
+    @Test
+    public void testMax3() {
+        assertEquals(40, m.findMax(10, 20, 40));
+    }
+}
+
+
+5. Bank account ( balance, deposit n withdrawal)
+public class BankAccount {
+    double balance;
+    public BankAccount(double balance) {
+        this.balance = balance;
+    }
+    public void deposit(double amount) {
+        balance += amount;
+    }
+    public void withdraw(double amount) {
+        balance -= amount;
+    }
+    public double getBalance() {
+        return balance;
+    }
+}
+__________________
+
+import static org.junit.Assert.*;
+import org.junit.Test;
+
+public class BankAccountTest {
+
+    @Test
+    public void testDeposit() {
+        BankAccount b = new BankAccount(1000);
+        b.deposit(500);
+        assertEquals(1500, b.getBalance(), 0.0);
+    }
+
+    @Test
+    public void testWithdraw() {
+        BankAccount b = new BankAccount(1000);
+        b.withdraw(200);
+        assertEquals(800, b.getBalance(), 0.0);
+    }
+}
+
