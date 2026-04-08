@@ -1,0 +1,97 @@
+exp 15
+
+docker --version
+docker pull hello-world
+docker run hello-world
+docker ps
+docker ps -a
+docker pull caddy
+docker run caddy
+docker ps
+docker ps -a
+docker rm 1a6947f6e1ba
+docker rmi hello-world
+
+___________________________________________________________________________________________
+exp 16
+Create folder:
+
+docker-java-image
+
+Inside it create two files:
+
+docker-java-image
+ ├── Dockerfile
+ └── Sample.java
+
+public class Sample {
+    public static void main(String[] args) {
+        System.out.println("Hello from Docker Java Container!");
+    }
+}
+
+FROM openjdk:17
+WORKDIR /app
+COPY . /app
+RUN javac Sample.java
+CMD ["java", "Sample"]
+
+docker build -t myjavaapp .
+docker images
+docker run myjavaapp
+________________________________________________________________________________
+exp 17
+
+docker --version
+
+docker pull nginx
+
+docker volume create myvolume
+
+docker ps -a
+
+docker rm -f mycontainer
+
+docker run -d -p 8081:80 -v myvolume:/usr/share/nginx/html --name mycontainer nginx
+
+docker ps
+
+http://localhost:8081
+______________________________________________________________________________________________
+
+exp 18
+Open the website:
+
+Go to Docker Hub
+
+https://hub.docker.com
+
+Click Sign Up
+Create account
+Verify email
+Login
+
+cd C:\Users\PRAGA\OneDrive\Desktop\Docker\demo_project
+
+docker build -t myapp .
+
+docker login
+
+docker tag myapp pragathi154/myapp:v1
+
+docker push pragathi154/myapp:v1
+
+____________________________________________________________________________________________________
+exp 19
+
+open Jenkins 
+add item 
+freestyle
+ 
+docker build -t myappjenkins .
+docker run -d -t myappjenkins
+save
+build now
+console output
+________________________________________________________________________________________________
+
