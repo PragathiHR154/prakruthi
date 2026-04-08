@@ -45,45 +45,25 @@ public class CalculatorTest {
 
 
 2. Simple greeting msg (API) 
-GreetingApp.java (Main Class)
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-@SpringBootApplication
-public class GreetingApp {
-
-    public static void main(String[] args) {
-        SpringApplication.run(GreetingApp.class, args);
-    }
-}
-_____
-GreetingController.java (API Class)
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-@RestController
-public class GreetingController {
-
-    @GetMapping("/greet")
-    public String greet() {
-        return "Hello, Welcome!";
-    }
-}
-_____
- JUnit 4 Test Code
-import static org.junit.Assert.*;
-import org.junit.Test;
-
-public class GreetingControllerTest {
-
-    GreetingController g = new GreetingController();
-
+package org.bnmit.demo;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+public class GreetingTest {
+    Greeting g = new Greeting();
     @Test
-    public void testGreet() {
-        assertEquals("Hello, Welcome!", g.greet());
+    void testGreeting() {
+        assertEquals("Hello Rakshitha", g.greet("Rakshitha"));
+    }
+}
+package org.bnmit.demo;
+_____________________________
+public class Greeting {
+    public String greet(String name) {
+        return "Hello " + name;
     }
 }
 
+ 
 
 3. Linear search 
 public class LinearSearch {
