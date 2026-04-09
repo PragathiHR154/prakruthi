@@ -1,0 +1,308 @@
+. Difference between JUnit 4 and JUnit 5
+•	JUnit is a testing framework for Java.
+
+JUnit 4	JUnit 5
+Monolithic architecture	Modular architecture
+Uses older annotations (@Before, @After)	Uses new annotations (@BeforeEach, @AfterEach)
+Limited features	More powerful and flexible
+No support for Java 8 features	Supports Java 8+ (lambdas, streams)
+Less extensible	Highly extensible with extensions
+
+Conclusion: JUnit 5 is more advanced, flexible, and modern compared to JUnit 4
+
+
+2. JUnit Annotations + Assert Methods
+Annotations:
+•	@Test – defines test method 
+•	@BeforeEach – runs before each test 
+•	@AfterEach – runs after each test 
+•	@BeforeAll – runs once before all tests 
+•	@AfterAll – runs once after all tests 
+•	@Disabled – skips test 
+Assert Methods:
+•	assertEquals(expected, actual) 
+•	assertTrue(condition) 
+•	assertFalse(condition) 
+•	assertNull(object) 
+•	assertNotNull(object) 
+•	assertThrows() 
+Conclusion: Annotations control execution, assertions validate results.
+
+3. JaCoCo and Report Generation
+JaCoCo (Java Code Coverage) is a tool used to measure how much of the source code is tested by test cases.
+It helps developers identify:
+•	Untested code 
+•	Weak test coverage 
+•	Missing test cases 
+Steps to generate report:
+1.	Add JaCoCo plugin in Maven/Gradle 
+2.	Run test cases using mvn test 
+3.	Generate coverage report using mvn jacoco:report 
+4.	Open HTML report to view coverage 
+The report shows:
+•	Line coverage 
+•	Branch coverage 
+•	Method coverage 
+Conclusion: JaCoCo improves code quality by ensuring maximum test coverage.
+
+4. Docker Architecture and Components
+Docker is a containerization platform with a client-server architecture.
+Components:
+•	Docker Client: Interface where users run commands 
+•	Docker Daemon: Background service that manages containers 
+•	Docker Images: Templates used to create containers 
+•	Docker Containers: Running instances of images 
+•	Docker Registry (Docker Hub): Stores and distributes images 
+Working:
+Client sends commands → Daemon processes → Containers are created from images.
+Conclusion: Docker architecture enables fast and efficient application deployment.
+
+
+5. Docker Image, Dockerfile, Docker Hub
+Docker uses three key elements:
+•	Docker Image: A read-only template containing application code and dependencies. It is used to create containers. 
+•	Dockerfile: A text file containing instructions (like install software, copy files) to build an image. 
+•	Docker Hub: A cloud-based repository to store, share, and download Docker images. 
+Working:
+Dockerfile → builds Image → Image runs as Container → stored in Docker Hub
+Conclusion: These components simplify application packaging and deployment.
+
+6.Virtuilaztion and containeriztaion
+
+
+
+Virtualization and containerization are techniques to run multiple applications.
+•	Virtualization uses a hypervisor to create virtual machines, each with its own OS. 
+•	Containerization uses the host OS kernel to run lightweight containers. 
+Differences:
+•	Virtual machines are heavy and slow 
+•	Containers are lightweight and fast 
+•	VMs require full OS, containers share OS 
+•	Containers provide better performance 
+Conclusion: Containerization is more efficient and widely used in DevOps.
+
+
+
+7. Lifecycle of Docker Container
+Docker containers go through different stages:
+1.	Create – container is created from image 
+2.	Start – container starts execution 
+3.	Run – application runs inside container 
+4.	Pause – container is temporarily stopped 
+5.	Stop – container execution stops 
+6.	Remove – container is deleted 
+These stages help manage application lifecycle efficiently.
+Conclusion: Understanding lifecycle helps in better container management.
+
+8. AWS Services for Deployment
+Amazon Web Services (AWS) provides various services for application deployment:
+•	EC2 (Elastic Compute Cloud) – provides virtual servers 
+•	S3 (Simple Storage Service) – used for storing files 
+•	RDS (Relational Database Service) – managed database service 
+•	Lambda – serverless computing (runs code without servers) 
+•	Elastic Beanstalk – simplifies application deployment 
+These services provide scalability, flexibility, and reliability.
+Conclusion: AWS enables efficient and scalable cloud-based deployment.
+
+9. Azure Features for Deployment
+Microsoft Azure is a cloud platform that provides services for application deployment.
+Key Features:
+•	Virtual Machines – run applications 
+•	Azure App Services – deploy web apps easily 
+•	Azure DevOps – supports CI/CD pipelines 
+•	Azure Storage – cloud storage service 
+•	AI & Analytics tools – advanced data processing 
+Azure integrates well with Microsoft technologies like Windows and .NET.
+Conclusion: Azure provides a complete environment for building and deploying applications.
+
+10. Advantages of Cloud Deployment
+Cloud deployment means hosting applications on cloud platforms.
+Advantages:
+•	Scalability – resources can be increased or decreased 
+•	Cost-effective – pay only for usage 
+•	High availability – services are always accessible 
+•	Easy maintenance – automatic updates 
+•	Global access – access from anywhere 
+Cloud reduces hardware dependency and improves performance.
+Conclusion: Cloud deployment is efficient, flexible, and widely used in modern applications.
+
+1. How to Test Exceptions in JUnit 5
+JUnit 5 provides built-in support to test exceptions using assertion methods.
+Definition:
+Testing exceptions ensures that a method throws the expected error under invalid conditions.
+Method Used:
+•	assertThrows() is used to verify exceptions. 
+Syntax:
+ 
+assertThrows(ExceptionType.class, () -> {
+    // code that throws exception
+});
+ 
+Explanation:
+•	If expected exception occurs → test passes 
+•	If no exception or wrong exception → test fails 
+Example:
+ 
+assertThrows(ArithmeticException.class, () -> {
+    int a = 10/0;
+});
+ 
+Advantages:
+•	Improves reliability of error handling 
+•	Ensures robustness of code 
+•	Helps identify incorrect logic 
+Conclusion: Exception testing in JUnit 5 ensures that applications handle errors properly and behave as expected.
+
+2. How to Improve Code Coverage using JaCoCo
+JaCoCo is a tool used to measure how much code is executed during testing.
+Definition:
+Code coverage indicates the percentage of code tested by test cases.
+Types of Coverage:
+•	Line coverage 
+•	Branch coverage 
+•	Method coverage 
+Ways to Improve:
+•	Write more unit tests 
+•	Cover all if-else branches 
+•	Test loops and edge cases 
+•	Include negative test cases 
+•	Remove dead or unused code 
+Importance:
+•	Identifies untested code 
+•	Reduces bugs 
+•	Improves software quality 
+Tools Support:
+•	Works with Maven and Gradle 
+•	Generates HTML reports 
+Conclusion: Improving code coverage leads to better testing, fewer bugs, and higher code quality.
+
+3. Docker Commands (Start, Stop, Kill)
+Docker provides commands to manage container lifecycle.
+Definition:
+Docker commands control the execution of containers.
+Commands:
+•	Start 
+ 
+docker start <container_id>
+ 
+Starts an already created container.
+•	Stop 
+ 
+docker stop <container_id>
+ 
+Stops container gracefully.
+•	Kill 
+ 
+docker kill <container_id>
+ 
+Stops container immediately (forcefully).
+Differences:
+•	Stop → allows cleanup 
+•	Kill → immediate termination 
+Importance:
+•	Helps manage running applications 
+•	Enables resource control 
+Conclusion: These commands are essential for efficient container management in Docker.
+
+4. Purpose of Volume in Docker
+Docker volume is used for data storage and persistence.
+Definition:
+A volume is a storage mechanism that allows data to exist outside the container.
+Features:
+•	Data persists even after container deletion 
+•	Can be shared between multiple containers 
+•	Stored on host system 
+Usage:
+ 
+docker run -v /host:/container
+ 
+Advantages:
+•	Data backup and recovery 
+•	Improved performance 
+•	Easy data sharing 
+Example:
+Database data stored in volume remains even if container stops.
+Conclusion: Docker volumes ensure safe and persistent data storage across containers.
+
+5. Puppet Architecture (Master–Agent)
+
+
+
+
+Puppet is a configuration management tool used to automate system setup.
+Components:
+•	Puppet Master: Central server storing configurations 
+•	Puppet Agent: Installed on client machines 
+•	Nodes: Systems being managed 
+Working:
+1.	Agent requests configuration from Master 
+2.	Master sends configuration (manifest) 
+3.	Agent applies configuration to system 
+Features:
+•	Automation 
+•	Centralized control 
+•	Consistency 
+Advantages:
+•	Reduces manual work 
+•	Ensures uniform configuration 
+Conclusion: Puppet Master–Agent architecture enables automated and consistent system management.
+
+6. Benefits of Configuration Management Tools
+Configuration management tools help automate infrastructure and system setup.
+Definition:
+Tools like Puppet, Chef, and Ansible manage system configurations automatically.
+Benefits:
+•	Automation of repetitive tasks 
+•	Consistency across environments 
+•	Reduced human errors 
+•	Faster deployment 
+•	Scalability for large systems 
+•	Version control of configurations 
+Importance:
+•	Maintains same environment in dev, test, production 
+•	Supports DevOps practices 
+Conclusion: These tools improve efficiency, reliability, and speed of software deployment.
+
+7. Cloud Platforms (AWS vs Azure Difference)
+AWS and Azure are leading cloud service providers.
+AWS:
+•	Largest cloud provider 
+•	Offers wide range of services 
+•	Flexible pricing 
+•	Strong global infrastructure 
+Azure:
+•	Developed by Microsoft 
+•	Better integration with Windows and .NET 
+•	Preferred by enterprises 
+•	Easy hybrid cloud support 
+Differences:
+•	AWS → more services, more complex 
+•	Azure → easier for Microsoft users 
+Similarities:
+•	Both provide scalability 
+•	Both support IaaS, PaaS, SaaS 
+Conclusion: Both platforms are powerful; choice depends on business needs and technology stack.
+
+8. Why Multiple Deployment Systems Exist
+Different deployment systems are used to handle modern application requirements.
+Reasons:
+•	Different application sizes and complexities 
+•	Need for high availability 
+•	Handling large traffic 
+•	Continuous updates and delivery 
+Challenges Addressed:
+•	Load balancing 
+•	Fault tolerance 
+•	Scalability 
+•	Faster deployment 
+Types:
+•	Traditional deployment 
+•	Virtualized deployment 
+•	Container-based deployment 
+•	Cloud deployment 
+Importance:
+•	Improves performance 
+•	Reduces downtime 
+•	Ensures reliability 
+Conclusion: Multiple deployment systems exist to efficiently manage complex and scalable applications.
+
