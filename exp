@@ -94,4 +94,6 @@ save
 build now
 console output
 ________________________________________________________________________________________________
-
+ngrok version
+ngrok config add-authtoken YOUR_AUTH_TOKEN
+ngrok http 8080
