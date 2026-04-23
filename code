@@ -43,126 +43,37 @@ public class CalculatorTest {
     }
 }
 
-
-2. Simple greeting msg (API) 
-package org.bnmit.demo;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
-public class GreetingTest {
-    Greeting g = new Greeting();
-    @Test
-    void testGreeting() {
-        assertEquals("Hello Rakshitha", g.greet("Rakshitha"));
-    }
-}
-package org.bnmit.demo;
-_____________________________
-public class Greeting {
-    public String greet(String name) {
-        return "Hello " + name;
-    }
-}
-
- 
-
-3. Linear search 
-public class LinearSearch {
-    public static int search(int arr[], int key) {
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == key) {
-                return i; // element found
-            }
-        }
-        return -1; // not found
-    }
-    public static void main(String[] args) {
-        int arr[] = {10, 20, 30, 40, 50};
-        int key = 30;
-        int result = search(arr, key);
-        if (result != -1)
-            System.out.println("Element found at index: " + result);
-        else
-            System.out.println("Element not found");
-    }
-}
-__________
-
-import static org.junit.Assert.*;
-import org.junit.Test;
-public class LinearSearchTest {
-    @Test
-    public void testElementFound() {
-        int arr[] = {10, 20, 30, 40, 50};
-        int result = LinearSearch.search(arr, 30);
-        assertEquals(2, result);
-    }
-    @Test
-    public void testElementNotFound() {
-        int arr[] = {10, 20, 30, 40, 50};
-        int result = LinearSearch.search(arr, 99);
-        assertEquals(-1, result);
-    }
-}
-
-
-4. Compare 3 numbers and print highest number among three 
-public class MaxNumber {
-    public int findMax(int a, int b, int c) {
-        int max = a;
-        if (b > max) {
-            max = b;
-        }
-        if (c > max) {
-            max = c;
-        }
-        return max;
-    }
-    public static void main(String[] args) {
-        MaxNumber m = new MaxNumber();
-        int result = m.findMax(10, 25, 15);
-        System.out.println("Highest number is: " + result);
-    }
-}
-_____
-
-import static org.junit.Assert.*;
-import org.junit.Test;
-
-public class MaxNumberTest {
-
-    MaxNumber m = new MaxNumber();
-
-    @Test
-    public void testMax1() {
-        assertEquals(25, m.findMax(10, 25, 15));
-    }
-
-    @Test
-    public void testMax2() {
-        assertEquals(50, m.findMax(50, 20, 30));
-    }
-
-    @Test
-    public void testMax3() {
-        assertEquals(40, m.findMax(10, 20, 40));
-    }
-}
-
-
 5. Bank account ( balance, deposit n withdrawal)
 public class BankAccount {
     double balance;
+
     public BankAccount(double balance) {
         this.balance = balance;
     }
+
     public void deposit(double amount) {
         balance += amount;
     }
+
     public void withdraw(double amount) {
         balance -= amount;
     }
+
     public double getBalance() {
         return balance;
+    }
+
+    // Main method
+    public static void main(String[] args) {
+        BankAccount account = new BankAccount(1000);
+
+        System.out.println("Initial Balance: " + account.getBalance());
+
+        account.deposit(500);
+        System.out.println("After Deposit: " + account.getBalance());
+
+        account.withdraw(300);
+        System.out.println("After Withdrawal: " + account.getBalance());
     }
 }
 __________________
@@ -209,6 +120,63 @@ public class Calculator {
         System.out.println("Div: " + c.divide(10, 5));
     }
 }
+________________
+pipeline {
+    agent any
 
-********************
+    stages {
 
+        stage('Hello World') {
+            steps {
+                bat 'echo Hello World'
+            }
+        }
+
+    }
+}
+__________________________
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Build') {
+            steps {
+                bat 'echo Building Hello World...'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                bat 'echo Testing Hello World...'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                bat 'echo Hello World Deployed!'
+            }
+        }
+
+    }
+}
+__________________________
+public class Grade {
+
+    public static void main(String[] args) {
+
+        int marks = 82;
+
+        if (marks >= 90) {
+            System.out.println("Grade: A");
+        } else if (marks >= 75) {
+            System.out.println("Grade: B");
+        } else if (marks >= 60) {
+            System.out.println("Grade: C");
+        } else if (marks >= 50) {
+            System.out.println("Grade: D");
+        } else {
+            System.out.println("Grade: F");
+        }
+    }
+}
